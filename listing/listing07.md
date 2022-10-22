@@ -52,7 +52,7 @@ func main() {
 Ответ:
 ```
 After some outup we would see endless zeros,
-because we read in cycle from closed channel
+because we read in cycle from opened channel
 
 
 ```
