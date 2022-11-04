@@ -1,6 +1,11 @@
 package main
 
-/*func cutLine(data string, delimiter string) {
+import (
+	"fmt"
+	"strings"
+)
+
+func cutLine(data string, delimiter string) {
 	if delimiter == "" || !strings.Contains(data, delimiter) {
 		if !sFlag {
 			fmt.Println(data)
@@ -15,4 +20,4 @@ package main
 	} else {
 		fmt.Println(fields[fFlag-1])
 	}
-}*/
+}

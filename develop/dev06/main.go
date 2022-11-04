@@ -1,12 +1,9 @@
 package main
 
 import (
-	"bufio"
 	"flag"
 	"fmt"
 	"log"
-	"os"
-	"strings"
 )
 
 var (
@@ -31,35 +28,5 @@ func main() {
 	fmt.Println(data)
 	for _, val := range data {
 		cutLine(val, dFlag)
-	}
-}
-
-func getDataFromStdin() []string {
-	data := make([]string, 0)
-
-	scanner := bufio.NewScanner(os.Stdin)
-	for scanner.Scan() {
-		data = append(data, scanner.Text())
-	}
-	if err := scanner.Err(); err != nil {
-		log.Fatalln(err)
-	}
-	return data
-}
-
-func cutLine(data string, delimiter string) {
-	if delimiter == "" || !strings.Contains(data, delimiter) {
-		if !sFlag {
-			fmt.Println(data)
-		}
-		return
-	}
-
-	fields := strings.Split(data, delimiter)
-
-	if fFlag > len(fields) {
-		fmt.Println()
-	} else {
-		fmt.Println(fields[fFlag-1])
 	}
 }

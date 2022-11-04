@@ -1,6 +1,12 @@
 package main
 
-/*func getDataFromStdin() []string {
+import (
+	"bufio"
+	"log"
+	"os"
+)
+
+func getDataFromStdin() []string {
 	data := make([]string, 0)
 	if fFlag <= 0 {
 		log.Fatalln("invalid number of the field")
@@ -14,4 +20,3 @@ package main
 	}
 	return data
 }
-*/
