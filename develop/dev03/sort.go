@@ -7,7 +7,7 @@ func sort(data [][]string) error {
 		if kFlag > len(data[0]) {
 			return ErrIncorrectColumnNumber
 		}
-		bubbleSort(kFlag, data)
+		quickSort(kFlag, data)
 		return nil
 	}
 	if nFlag {
@@ -15,11 +15,11 @@ func sort(data [][]string) error {
 		if err != nil {
 			return err
 		}
-		bubbleSort(indx, data)
+		quickSort(indx, data)
 		return nil
 	}
 
-	bubbleSort(1, data)
+	quickSort(1, data)
 	return nil
 }
 
@@ -34,15 +34,23 @@ func findDigitIndex(data [][]string) (int, error) {
 	return -1, ErrAbsentInteger
 }
 
-func bubbleSort(flag int, data [][]string) {
+func quickSort(flag int, data [][]string) {
+	if len(data) < 2 {
+		return
+	}
 	indx := flag - 1
-	for i := 0; i < len(data); i++ {
-		for j := 0; j < len(data); j++ {
-			if compare(data[i][indx], data[j][indx]) {
-				data[i], data[j] = data[j], data[i]
-			}
+	start, end := 0, len(data)-1
+	pivot := end
+	for i := 0; i < end; i++ {
+		if compare(data[i][indx], data[pivot][indx]) {
+			data[i], data[start] = data[start], data[i]
+			start++
 		}
 	}
+	data[start], data[pivot] = data[pivot], data[start]
+
+	quickSort(flag, data[start+1:])
+	quickSort(flag, data[:start])
 }
 
 func compare(str1, str2 string) bool {
