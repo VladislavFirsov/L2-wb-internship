@@ -136,3 +136,25 @@ func (l *linkedList) handleBFlag(num int) error {
 	}
 	return nil
 }
+
+func (l *linkedList) handleCFlag(num int) error {
+	ptr := l.head
+	for ptr.next != nil {
+		if ptr.found {
+			fmt.Println(ptr.data)
+			back := ptr
+			forth := ptr
+			for i := 0; i < num; i++ {
+				if back.prev == nil || forth.next == nil {
+					return ErrOutOfRange
+				}
+				fmt.Println(back.prev.data)
+				fmt.Println(forth.next.data)
+				back = back.prev
+				forth = forth.next
+			}
+		}
+		ptr = ptr.next
+	}
+	return nil
+}

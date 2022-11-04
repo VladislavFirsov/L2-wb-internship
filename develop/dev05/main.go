@@ -46,10 +46,10 @@ func main() {
 			log.Fatalln(err)
 		}
 	case CFlag != 0:
-		err1 := data.handleAFlag(CFlag)
-		err2 := data.handleBFlag(CFlag)
-		if err1 != nil || err2 != nil {
-			log.Fatalln("error parsing CFlag")
+		if err := data.handleCFlag(CFlag); err != nil {
+			log.Fatalln(err)
 		}
+	default:
+		data.showMatches()
 	}
 }
